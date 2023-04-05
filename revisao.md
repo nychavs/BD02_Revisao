@@ -34,6 +34,21 @@ Relacionamentos n:n
 > Nova tabela herda chaves primárias
 
 ## Normalização
+Primeira forma normal:
+> Possui chave primária
+> Não possui multivalorado (telefone)
+> Não possui dados compostos (endereco)
+> Não possui colunas com tipos de dados repetidos
+
+Segunda forma normal:
+> Está na 1FN
+> Não possui dependencia parcial
+
+Terceira forma normal:
+> Está na 3FN
+> Criar nova tabela para cada atributo não chave x e seu respectivo atributo nao chave do qual depende y
+> Se x depende de y, y passa a ser PK em outra tabela e x é removido da original enquanto y é mantido
+
 ## Alteração na Tabela
 ## Funções de Agregação
 ## Restrições
