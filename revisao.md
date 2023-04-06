@@ -69,6 +69,36 @@ As restrições mais utilizadas são: not null, unique, primary key, foreign key
 > Nesse caso, o sgbd define o nome para a constraint
 
 ## Funções
+Usadas para gerar um valor que pode ser usado em uma expressão, que pode ser baseado em parametros ou não. Sendo executada como parte de uma expressão. Ex:
+> Select atributos, nomeFuncao<br>
+> from tabela
+Estrutura da função
+> create or replace function *func* (*param TIPO,...*)
+> returns *tipo* as $$
+> begin
+> *Lógica de programação…*
+> end;
+> $$ language plpgsql;
+Lembre-se: Ao modificar uma tabela ja criada e manter o tipo, pode ainda usar-se o or replace. No entanto, se modificar oo tipo de retorno, uma nova tabela deverá ser criada.
+
+Declarar variaveis:
+> DECLARE... *tipo*;
+> DECLARE... *tipo* := *valor*
+
+Printar:
+> Raise notice 'aaa: %', *variavel*
+Condições:
+> IF... THEN... END IF
+> IF... THEN... ELSE... END IF
+
+>WHILE () LOOP... END LOOP;
+
+>FOR... IN.. LOOP.. END LOOP;
+
+Não necessariamente as funções possuem print, elas podem apenas retornar algo,  nesse caso na logica de programcao ficaria:
+> if (*condicao*) then return...
+> if (time = 'palmeiras') then return time||':sem mundial'
+> o operador || serve para indicar concatenação
 
 ## Gatilhos
 
