@@ -71,24 +71,24 @@ As restrições mais utilizadas são: not null, unique, primary key, foreign key
 ## Funções
 Usadas para gerar um valor que pode ser usado em uma expressão, que pode ser baseado em parametros ou não. Sendo executada como parte de uma expressão. Ex:
 > Select atributos, nomeFuncao<br>
-> from tabela
-Estrutura da função
-> create or replace function *func* (*param TIPO,...*)
-> returns *tipo* as $$
-> begin
-> *Lógica de programação…*
-> end;
-> $$ language plpgsql;
+> from tabela<br>
+Estrutura da função <br>
+> create or replace function *func* (*param TIPO,...*) <br>
+> returns *tipo* as $$ <br>
+> begin<br>
+> *Lógica de programação…*<br>
+> end;<br>
+> $$ language plpgsql;<br>
 Lembre-se: Ao modificar uma tabela ja criada e manter o tipo, pode ainda usar-se o or replace. No entanto, se modificar oo tipo de retorno, uma nova tabela deverá ser criada.
 
 Declarar variaveis:
-> DECLARE... *tipo*;
+> DECLARE... *tipo*;<br>
 > DECLARE... *tipo* := *valor*
 
 Printar:
 > Raise notice 'aaa: %', *variavel*
 Condições:
-> IF... THEN... END IF
+> IF... THEN... END IF<br>
 > IF... THEN... ELSE... END IF
 
 >WHILE () LOOP... END LOOP;
@@ -96,8 +96,8 @@ Condições:
 >FOR... IN.. LOOP.. END LOOP;
 
 Não necessariamente as funções possuem print, elas podem apenas retornar algo,  nesse caso na logica de programcao ficaria:
-> if (*condicao*) then return...
-> if (time = 'palmeiras') then return time||':sem mundial'
+> if (*condicao*) then return...<br>
+> if (time = 'palmeiras') then return time||':sem mundial'<br>
 > o operador || serve para indicar concatenação
 
 ## Gatilhos
