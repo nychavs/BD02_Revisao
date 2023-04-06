@@ -117,5 +117,5 @@ exemplo de função:
 > values(old.*campo*,new.*campo*, *valor*)<br>
 > return old/new<br>
 > end $$ language plpgsql<br>
-> ***old é usado para manter a linha antiga quando usa-se update ou delete;
-> ***new é usado quanod contem unha nova linha para armazenar, quando usa-se insert ou update
+> ***old é usado para manter a linha antiga quando usa-se update ou delete;<br>
+> ***new é usado quando contem uma nova linha para armazenar, quando usa-se insert ou update
