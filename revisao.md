@@ -50,8 +50,15 @@ Terceira forma normal:
 > Se x depende de y, y passa a ser PK em outra tabela e x é removido da original enquanto y é mantido
 
 ## Alteração na Tabela
+o Alter table é usado para fazer alterações na estrutura da tabela, não ppodemos confudir com o update!! (apenas para alterações nas linhas ja existentes). Com o alter table, podemos fazer várias ações como adicionar/remover colunas, mudar o tipo da coluna, criar um valor default para uma coluna, criar chave secundária etc...
+> Alter Table *nomeTabela*<br>
+> ação...
+
 ## Funções de Agregação
+
 ## Restrições
+
 ## Funções
+
 ## Gatilhos
 
