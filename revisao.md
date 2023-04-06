@@ -60,12 +60,12 @@ o Alter table é usado para fazer alterações na estrutura da tabela, não ppod
 As restrições mais utilizadas são: not null, unique, primary key, foreign key e check;
 > Check: registro só pode ser inserido se respeitar uma condição (como um if). Exemplo: <br>
 
-> É possível atribuir um nome ao check, por exemplo:
+> É possível atribuir um nome ao check, por exemplo:<br>
 > dataInicio date not null; dataFim date not null<br>
-> Constraint periodoValido
-> check (dtInicio < dtFim)
+> constraint periodoValido<br>
+> check (dtInicio < dtFim)<br>
 
-> age integer check (age >= 18)
+> age integer check (age >= 18)<br>
 > Nesse caso, o sgbd define o nome para a constraint
 
 ## Funções
