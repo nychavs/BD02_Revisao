@@ -95,10 +95,27 @@ Condições:
 
 >FOR... IN.. LOOP.. END LOOP;
 
-Não necessariamente as funções possuem print, elas podem apenas retornar algo,  nesse caso na logica de programcao ficaria:
+Não necessariamente as funções possuem print, elas podem apenas retornar algo,  nesse caso na logica de programacao ficaria:
 > if (*condicao*) then return...<br>
 > if (time = 'palmeiras') then return time||':sem mundial'<br>
 > o operador || serve para indicar concatenação
 
 ## Gatilhos
+Quando uma ação for realizada a trigger (o gatilho) é disparado realizando suas funções
+Podem ser usadas por exemplo para guardar as infos de modificações feitas no banco, como quando foi feito um insert e com o que. 
+Sua estrutura é:
+> create trigger *nome*<br>
+> after/before *acao* on *nomeTabela*<br>
+> for each row/statement (linha/comando transação)<br>
+> execute procedure *nomeFunc()*<br>
 
+exemplo de função:
+> create function *nome* <br>
+> returns trigger as $$ <br>
+> begin <br>
+> insert into *coluna*(*nome dos campos)*<br>
+> values(old.*campo*,new.*campo*, *valor*)<br>
+> return old/new<br>
+> end $$ language plpgsql<br>
+> ***old é usado para manter a linha antiga quando usa-se update ou delete;
+> ***new é usado quanod contem unha nova linha para armazenar, quando usa-se insert ou update
