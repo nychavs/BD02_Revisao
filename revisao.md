@@ -192,6 +192,16 @@ GROUP BY c.nome;
 
 ## transactions
 são alterações feitas no banco, tendo com principais transactions: commit, rollback e savepoint
+commit -> concretizar as operações
+savepoint -> ponto de referencia onde o estado dos dados é salvo 
+rollback -> volta pro estado do savepoint
+exemplo:
+BEGIN;
+UPDATE empregado set salario = salario * 1.1;
+SAVEPOINT aumento_salario;
+UPDATE empregado set salario = salario + 500 WHERE nome =’José’;ROLLBACK to aumento_salario;
+COMMIT;
 
-# links uteis
-https://storware.eu/blog/pros-and-cons-of-cold-backup-and-hot-backup-comparison/
+## backup 
+comando pg dump para exportar o banco de dados:
+pg_dump -U dbusername dbname > dbexport.pgsql
