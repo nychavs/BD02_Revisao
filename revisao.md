@@ -58,6 +58,11 @@ Terceira forma normal:
 > Criar nova tabela para cada atributo não chave x e seu respectivo atributo nao chave do qual depende y
 > Se x depende de y, y passa a ser PK em outra tabela e x é removido da original enquanto y é mantido
 
+## Operações básicas
+INSERT into FUNCIONARIO (IdFuncionario, Nome) values (1, ‘Funcionário A’); <br></br>
+UPDATE FUNCIONARIO set Nome = ‘Funcionário A - alterado’ where IdFuncionario = 1; <br></br>
+DELETE from FUNCIONARIO where IdFuncionario = 1; <br></br>
+
 ## Alteração na Tabela
 o Alter table é usado para fazer alterações na estrutura da tabela, não ppodemos confudir com o update!! (apenas para alterações nas linhas ja existentes). Com o alter table, podemos fazer várias ações como adicionar/remover colunas, mudar o tipo da coluna, criar um valor default para uma coluna, criar chave secundária etc...
 > Alter Table *nomeTabela*<br>
@@ -176,32 +181,44 @@ a diferença é que a view materialized vai criar uma copia do select que usamos
 Já a view normal realiza uma consulta (query) em tempo de execução
 
 ### materialized:
-CREATE MATERIALIZED VIEW mv_cliente_pedidos AS
-SELECT c.nome, SUM(p.valor) AS total_pedidos
-FROM clientes c
-JOIN pedidos p ON c.id_cliente = p.id_cliente
-GROUP BY c.nome;
+CREATE MATERIALIZED VIEW mv_cliente_pedidos AS<br></br>
+SELECT c.nome, SUM(p.valor) AS total_pedidos<br></br>
+FROM clientes c<br></br>
+JOIN pedidos p ON c.id_cliente = p.id_cliente<br></br>
+GROUP BY c.nome;<br></br>
 
-### normal: 
-CREATE VIEW view_cliente_pedidos AS
-SELECT c.nome, SUM(p.valor) AS total_pedidos
-FROM clientes c
-JOIN pedidos p ON c.id_cliente = p.id_cliente
-GROUP BY c.nome;
+### normal: <br></br>
+CREATE VIEW view_cliente_pedidos AS<br></br>
+SELECT c.nome, SUM(p.valor) AS total_pedidos<br></br>
+FROM clientes c<br></br>
+JOIN pedidos p ON c.id_cliente = p.id_cliente<br></br>
+GROUP BY c.nome;<br></br>
 
 
 ## transactions
-são alterações feitas no banco, tendo com principais transactions: commit, rollback e savepoint
-commit -> concretizar as operações
-savepoint -> ponto de referencia onde o estado dos dados é salvo 
-rollback -> volta pro estado do savepoint
+são alterações feitas no banco, tendo com principais transactions: commit, rollback e savepoint <br></br>
+commit -> concretizar as operações<br></br>
+savepoint -> ponto de referencia onde o estado dos dados é salvo <br></br>
+rollback -> volta pro estado do savepoint<br></br>
+
 exemplo:
-BEGIN;
-UPDATE empregado set salario = salario * 1.1;
-SAVEPOINT aumento_salario;
-UPDATE empregado set salario = salario + 500 WHERE nome =’José’;ROLLBACK to aumento_salario;
-COMMIT;
+BEGIN;<br></br>
+UPDATE empregado set salario = salario * 1.1;<br></br>
+SAVEPOINT aumento_salario;<br></br>
+UPDATE empregado set salario = salario + 500 WHERE nome =’José’;ROLLBACK to aumento_salario;<br></br>
+COMMIT;<br></br>
 
 ## backup 
-comando pg dump para exportar o banco de dados:
-pg_dump -U dbusername dbname > dbexport.pgsql
+comando pg dump para exportar o banco de dados: <br></br>
+pg_dump -U dbusername dbname > dbexport.pgsql<br></br>
+caso de ruim: <br></br>
+pg_dump -U dbusername dbname -N topology -T spatial_ref_sys > dbexport.pgsql<br></br>
+
+tutorial backup pelo pgadmin:
+The phpPgAdmin administration page appears in a new window. In the left pane of the phpPgAdmin window, expand Servers, expand PostgreSQL, and then click the name of the database that you want to export. <br></br>
+On the top menu bar, click Export.<br></br>
+Under Format, click Structure and data.<br></br>
+Under Options, in the Format list box, select SQL.<br></br>
+Under Options, click Download.<br></br>
+Click Export.<br></br>
+In the file dialog, select a location to save the file, and then click Save.<br></br>
